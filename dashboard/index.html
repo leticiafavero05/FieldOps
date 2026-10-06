@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Field Ops</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="sidebar" aria-label="Menu principal">
+  <div class="logo"><i class="bi bi-clipboard2-check"></i></div>
+  <a href="index.html" class="active" title="Dashboard"><i class="bi bi-speedometer2"></i></a>
+  <a href="#" title="Clientes, locais e equipamentos"><i class="bi bi-buildings"></i></a>
+  <a href="#" title="Modelos de checklist"><i class="bi bi-ui-checks"></i></a>
+  <a href="#" title="Planejar inspeção"><i class="bi bi-calendar-plus"></i></a>
+  <a href="#" title="Acompanhamento"><i class="bi bi-list-task"></i></a>
+  <a href="#" title="Revisão"><i class="bi bi-patch-check"></i></a>
+</nav>
+
+<main class="main">
+  <header class="topbar">
+    <h1><i class="bi bi-speedometer2 text-danger me-2"></i>Dashboard</h1>
+    <input class="form-control form-control-sm search" type="search" placeholder="Buscar inspeção" aria-label="Buscar">
+    <button class="icon-btn" data-bs-toggle="modal" data-bs-target="#acessibilidade" title="Acessibilidade" aria-label="Acessibilidade"><i class="bi bi-universal-access"></i></button>
+    <div class="dropdown">
+      <a class="d-flex align-items-center gap-2 text-decoration-none text-reset dropdown-toggle" href="#" data-bs-toggle="dropdown">
+        <span class="avatar"><i class="bi bi-person"></i></span>
+        <span class="lh-sm d-none d-sm-block"><strong>Supervisor</strong> <span class="badge badge-free">Admin</span><br><small class="text-muted-fo">supervisor@fieldops.com</small></span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="#">Meu perfil</a></li>
+        <li><a class="dropdown-item" href="#">Sair</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- indicadores -->
+  <section class="row g-3 mb-3" aria-label="Indicadores">
+    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Pendentes</small><strong>12</strong></div><span class="ico"><i class="bi bi-hourglass-split"></i></span></div></div>
+    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Em andamento</small><strong>8</strong></div><span class="ico"><i class="bi bi-play-circle"></i></span></div></div>
+    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Concluídas</small><strong>34</strong></div><span class="ico"><i class="bi bi-check2-circle"></i></span></div></div>
+    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Com não conformidades</small><strong>5</strong></div><span class="ico"><i class="bi bi-exclamation-triangle"></i></span></div></div>
+  </section>
+
+  <div class="row g-3 mb-3">
+    <!-- rosca -->
+    <section class="col-lg-7">
+      <div class="panel">
+        <h2>Andamento das inspeções</h2>
+        <p class="sub">Distribuição por situação no mês atual</p>
+        <div class="row align-items-center g-3">
+          <div class="col-sm-5"><div class="donut" role="img" aria-label="59 inspeções no total"><span>59<small>inspeções</small></span></div></div>
+          <div class="col-sm-7">
+            <ul class="legend">
+              <li><i style="background:var(--c-done)"></i>Concluídas: 34</li>
+              <li><i style="background:var(--c-run)"></i>Em andamento: 8</li>
+              <li><i style="background:var(--c-pend)"></i>Pendentes: 12</li>
+              <li><i style="background:var(--c-nc)"></i>Com não conformidades: 5</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- alertas -->
+    <section class="col-lg-5">
+      <div class="panel">
+        <h2>Inspeções prioritárias</h2>
+        <p class="sub">Exigem atenção do supervisor</p>
+        <div class="alert alert-fo"><strong>INS-1042</strong> com prioridade alta vence hoje e ainda não foi iniciada.</div>
+        <div class="alert alert-fo"><strong>INS-1038</strong> aguarda revisão há 2 dias.</div>
+        <div class="alert alert-fo mb-0"><strong>INS-1031</strong> teve 3 não conformidades críticas registradas.</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- recentes -->
+  <section class="panel">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+      <div><h2>Inspeções recentes</h2><p class="sub">Últimas inspeções planejadas ou enviadas pelos técnicos</p></div>
+      <a href="#" class="btn btn-brand btn-sm">Ver todas</a>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead><tr><th>Código</th><th>Cliente</th><th>Equipamento</th><th>Técnico</th><th>Data</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>INS-1042</td><td>Metalúrgica Alfa</td><td>Prensa hidráulica P-12</td><td>Carlos Lima</td><td>06/10/2026</td><td><span class="st st-plan">Planejada</span></td></tr>
+          <tr><td>INS-1041</td><td>Condomínio Vista Verde</td><td>Gerador G-03</td><td>Ana Souza</td><td>05/10/2026</td><td><span class="st st-run">Em andamento</span></td></tr>
+          <tr><td>INS-1038</td><td>Indústria Beta</td><td>Compressor C-07</td><td>Marcos Dias</td><td>03/10/2026</td><td><span class="st st-rev">Aguardando revisão</span></td></tr>
+          <tr><td>INS-1035</td><td>Hospital Central</td><td>Elevador E-02</td><td>Ana Souza</td><td>01/10/2026</td><td><span class="st st-ok">Aprovada</span></td></tr>
+          <tr><td>INS-1031</td><td>Logística Gama</td><td>Empilhadeira EM-15</td><td>Carlos Lima</td><td>29/09/2026</td><td><span class="st st-bad">Reprovada</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<!-- acessibilidade -->
+<div class="modal fade" id="acessibilidade" tabindex="-1" aria-labelledby="acessTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h2 class="modal-title fs-6 fw-bold" id="acessTitulo">Acessibilidade</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body pt-0">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+          <label class="form-check-label" for="darkSwitch">Modo escuro</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
