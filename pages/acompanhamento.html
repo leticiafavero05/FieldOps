@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acompanhamento | Field Ops</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="sidebar" aria-label="Menu principal">
+  <div class="logo"><i class="bi bi-clipboard2-check"></i></div>
+  <a href="index.html" title="Dashboard"><i class="bi bi-speedometer2"></i></a>
+  <a href="#" title="Clientes, locais e equipamentos"><i class="bi bi-buildings"></i></a>
+  <a href="#" title="Modelos de checklist"><i class="bi bi-ui-checks"></i></a>
+  <a href="#" title="Planejar inspeção"><i class="bi bi-calendar-plus"></i></a>
+  <a href="acompanhamento.html" class="active" title="Acompanhamento" aria-current="page"><i class="bi bi-list-task"></i></a>
+  <a href="#" title="Revisão"><i class="bi bi-patch-check"></i></a>
+</nav>
+
+<main class="main">
+  <header class="topbar">
+    <h1><i class="bi bi-list-task text-danger me-2"></i>Acompanhamento</h1>
+    <button class="icon-btn" data-bs-toggle="modal" data-bs-target="#acessibilidade" title="Acessibilidade" aria-label="Acessibilidade"><i class="bi bi-universal-access"></i></button>
+    <div class="dropdown">
+      <a class="d-flex align-items-center gap-2 text-decoration-none text-reset dropdown-toggle" href="#" data-bs-toggle="dropdown">
+        <span class="avatar"><i class="bi bi-person"></i></span>
+        <span class="lh-sm d-none d-sm-block"><strong>Supervisor</strong> <span class="badge badge-free">Admin</span><br><small class="text-muted-fo">supervisor@fieldops.com</small></span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="#">Meu perfil</a></li>
+        <li><a class="dropdown-item" href="#">Sair</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- pesquisa e filtros -->
+  <section class="panel filters mb-3" aria-labelledby="tituloFiltros">
+    <h2 id="tituloFiltros">Pesquisar e filtrar</h2>
+    <p class="sub">Refine a lista por status, cliente, técnico e período</p>
+
+    <form>
+      <div class="row g-3">
+        <div class="col-12 col-lg-6">
+          <label for="busca" class="filter-label">Pesquisa</label>
+          <div class="input-icon">
+            <i class="bi bi-search"></i>
+            <input type="search" class="form-control" id="busca" placeholder="Código, equipamento ou palavra-chave">
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <label for="status" class="filter-label">Status</label>
+          <select class="form-select" id="status">
+            <option selected>Todos</option>
+            <option>Planejada</option>
+            <option>Em andamento</option>
+            <option>Aguardando revisão</option>
+            <option>Aprovada</option>
+            <option>Reprovada</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <label for="cliente" class="filter-label">Cliente</label>
+          <select class="form-select" id="cliente">
+            <option selected>Todos</option>
+            <option>Metalúrgica Alfa</option>
+            <option>Condomínio Vista Verde</option>
+            <option>Indústria Beta</option>
+            <option>Hospital Central</option>
+            <option>Logística Gama</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <label for="tecnico" class="filter-label">Técnico</label>
+          <select class="form-select" id="tecnico">
+            <option selected>Todos</option>
+            <option>Ana Souza</option>
+            <option>Carlos Lima</option>
+            <option>Marcos Dias</option>
+          </select>
+        </div>
+        <div class="col-6 col-lg-3">
+          <label for="dataDe" class="filter-label">Período de</label>
+          <input type="date" class="form-control" id="dataDe">
+        </div>
+        <div class="col-6 col-lg-3">
+          <label for="dataAte" class="filter-label">Até</label>
+          <input type="date" class="form-control" id="dataAte">
+        </div>
+        <div class="col-12 col-lg-3 d-flex align-items-end gap-2">
+          <button type="button" class="btn btn-brand btn-sm flex-fill"><i class="bi bi-funnel me-1"></i>Filtrar</button>
+          <button type="reset" class="btn btn-outline-brand btn-sm flex-fill"><i class="bi bi-x-circle me-1"></i>Limpar</button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!-- lista -->
+  <section class="panel" aria-labelledby="tituloLista">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+      <div><h2 id="tituloLista">Todas as inspeções</h2><p class="sub">Acompanhe o andamento de cada inspeção planejada</p></div>
+      <span class="result-info">Exibindo 10 de 59 inspeções</span>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead><tr><th>Código</th><th>Cliente</th><th>Equipamento</th><th>Técnico</th><th>Data</th><th>Status</th><th class="text-end">Ações</th></tr></thead>
+        <tbody>
+          <tr><td>INS-1042</td><td>Metalúrgica Alfa</td><td>Prensa hidráulica P-12</td><td>Carlos Lima</td><td>06/10/2026</td><td><span class="st st-plan">Planejada</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1042"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>INS-1041</td><td>Condomínio Vista Verde</td><td>Gerador G-03</td><td>Ana Souza</td><td>05/10/2026</td><td><span class="st st-run">Em andamento</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1041"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>INS-1038</td><td>Indústria Beta</td><td>Compressor C-07</td><td>Marcos Dias</td><td>03/10/2026</td><td><span class="st st-rev">Aguardando revisão</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1038"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>INS-1035</td><td>Hospital Central</td><td>Elevador E-02</td><td>Ana Souza</td><td>01/10/2026</td><td><span class="st st-ok">Aprovada</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1035"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>INS-1031</td><td>Logística Gama</td><td>Empilhadeira EM-15</td><td>Carlos Lima</td><td>29/09/2026</td><td><span class="st st-bad">Reprovada</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1031"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>INS-1029</td><td>Metalúrgica Alfa</td><td>Torno CNC T-04</td><td>Marcos Dias</td><td>27/09/2026</td><td><span class="st st-ok">Aprovada</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1029"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>INS-1027</td><td>Hospital Central</td><td>Gerador G-01</td><td>Carlos Lima</td><td>25/09/2026</td><td><span class="st st-run">Em andamento</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1027"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>INS-1024</td><td>Condomínio Vista Verde</td><td>Elevador E-01</td><td>Ana Souza</td><td>22/09/2026</td><td><span class="st st-ok">Aprovada</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1024"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>INS-1020</td><td>Indústria Beta</td><td>Prensa excêntrica P-03</td><td>Marcos Dias</td><td>18/09/2026</td><td><span class="st st-rev">Aguardando revisão</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1020"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>INS-1017</td><td>Logística Gama</td><td>Compressor C-02</td><td>Carlos Lima</td><td>15/09/2026</td><td><span class="st st-plan">Planejada</span></td><td class="text-end"><button type="button" class="icon-btn icon-btn-sm" title="Ver detalhes" aria-label="Ver detalhes da INS-1017"><i class="bi bi-eye"></i></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <nav class="d-flex justify-content-end mt-3" aria-label="Paginação das inspeções">
+      <ul class="pagination">
+        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Anterior"><i class="bi bi-chevron-left"></i></a></li>
+        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#" aria-label="Próxima"><i class="bi bi-chevron-right"></i></a></li>
+      </ul>
+    </nav>
+  </section>
+</main>
+
+<!-- acessibilidade -->
+<div class="modal fade" id="acessibilidade" tabindex="-1" aria-labelledby="acessTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h2 class="modal-title fs-6 fw-bold" id="acessTitulo">Acessibilidade</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body pt-0">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+          <label class="form-check-label" for="darkSwitch">Modo escuro</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
