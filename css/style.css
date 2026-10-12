@@ -108,3 +108,17 @@ fieldset.prio legend{float:none;width:auto;padding:0}
 .btn-check:focus-visible+.btn-prio{outline:2px solid var(--brand);outline-offset:2px}
 .resumo dt{font-size:.7rem;font-weight:600;color:var(--muted);margin:0}
 .resumo dd{margin:0 0 .8rem;font-weight:600}
+
+/* modelos de checklist */
+.st-pub{background:#d9f3e1;color:#146c34}
+.st-draft{background:transparent;color:var(--muted);border:1px dashed var(--muted)}
+.ver{font-size:.68rem;font-weight:600;padding:.3em .6em;border-radius:6px;background:var(--surface-2);color:var(--text);border:1px solid var(--line)}
+.desc{color:var(--muted);min-width:220px;max-width:340px}
+.btn-check:checked+.btn-prio.seg{background:var(--brand-soft);color:var(--brand);border-color:var(--brand)}
+tr[data-status="publicado"] td:first-child{box-shadow:inset 3px 0 0 #146c34}
+tr[data-status="rascunho"] td:first-child{box-shadow:inset 3px 0 0 var(--c-pend)}
+.lista:has(#fPub:checked) tr[data-status="rascunho"],
+.lista:has(#fRasc:checked) tr[data-status="publicado"]{display:none}
+.lista{counter-reset:modelos}
+.lista tbody tr{counter-increment:modelos}
+.contagem::after{content:counter(modelos)}
