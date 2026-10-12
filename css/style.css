@@ -89,3 +89,22 @@ body:has(#darkSwitch:checked) .filters .form-control,body:has(#darkSwitch:checke
   --bs-pagination-focus-color:var(--brand);--bs-pagination-focus-bg:var(--brand-soft);--bs-pagination-focus-box-shadow:0 0 0 .2rem var(--brand-soft);
   --bs-pagination-disabled-bg:var(--surface);--bs-pagination-disabled-color:var(--muted);--bs-pagination-disabled-border-color:var(--line);
   font-size:.75rem;margin:0}
+
+/* formulario (planejar inspecao) */
+.filter-label.req::after{content:" *";color:var(--brand)}
+.filters .form-text{color:var(--muted);font-size:.7rem}
+.filters textarea.form-control{resize:vertical;min-height:110px}
+.filters .form-control:user-invalid,.filters .form-select:user-invalid{border-color:var(--brand)}
+.form-section{font-size:.78rem;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.04em;
+  margin:1.1rem 0 .7rem;padding-bottom:.4rem;border-bottom:1px solid var(--line)}
+.form-section:first-of-type{margin-top:0}
+fieldset.prio{border:0;padding:0;margin:0}
+fieldset.prio legend{float:none;width:auto;padding:0}
+.btn-prio{border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:.78rem;padding:.4rem .9rem}
+.btn-prio:hover{background:var(--surface-2);color:var(--text);border-color:var(--line)}
+.btn-check:checked+.prio-baixa{background:#d9f3e1;color:#146c34;border-color:#146c34}
+.btn-check:checked+.prio-media{background:#ffe9c7;color:#8a5200;border-color:#8a5200}
+.btn-check:checked+.prio-alta{background:var(--brand-soft);color:var(--brand);border-color:var(--brand)}
+.btn-check:focus-visible+.btn-prio{outline:2px solid var(--brand);outline-offset:2px}
+.resumo dt{font-size:.7rem;font-weight:600;color:var(--muted);margin:0}
+.resumo dd{margin:0 0 .8rem;font-weight:600}
