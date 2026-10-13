@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clientes | Field Ops</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="sidebar" aria-label="Menu principal">
+  <div class="logo"><i class="bi bi-clipboard2-check"></i></div>
+  <a href="dashboard.html" title="Dashboard"><i class="bi bi-speedometer2"></i></a>
+  <a href="clientes.html" class="active" title="Clientes, locais e equipamentos" aria-current="page"><i class="bi bi-buildings"></i></a>
+  <a href="modelos-checklist.html" title="Modelos de checklist"><i class="bi bi-ui-checks"></i></a>
+  <a href="planejar-inspecao.html" title="Planejar inspeção"><i class="bi bi-calendar-plus"></i></a>
+  <a href="acompanhamento.html" title="Acompanhamento"><i class="bi bi-list-task"></i></a>
+  <a href="#" title="Revisão"><i class="bi bi-patch-check"></i></a>
+</nav>
+
+<main class="main">
+  <header class="topbar">
+    <h1><i class="bi bi-buildings text-danger me-2"></i>Clientes</h1>
+    <input class="form-control form-control-sm search" type="search" placeholder="Buscar cliente" aria-label="Buscar">
+    <button class="icon-btn" data-bs-toggle="modal" data-bs-target="#acessibilidade" title="Acessibilidade" aria-label="Acessibilidade"><i class="bi bi-universal-access"></i></button>
+    <div class="dropdown">
+      <a class="d-flex align-items-center gap-2 text-decoration-none text-reset dropdown-toggle" href="#" data-bs-toggle="dropdown">
+        <span class="avatar"><i class="bi bi-person"></i></span>
+        <span class="lh-sm d-none d-sm-block"><strong>Supervisor</strong> <span class="badge badge-free">Admin</span><br><small class="text-muted-fo">supervisor@fieldops.com</small></span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="#">Meu perfil</a></li>
+        <li><a class="dropdown-item" href="../index.html">Sair</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- resumo -->
+  <section class="row g-3 mb-3" aria-label="Resumo de clientes">
+    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Clientes</small><strong>24</strong></div><span class="ico"><i class="bi bi-buildings"></i></span></div></div>
+    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Ativos</small><strong>21</strong></div><span class="ico"><i class="bi bi-check2-circle"></i></span></div></div>
+    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Locais</small><strong>63</strong></div><span class="ico"><i class="bi bi-geo-alt"></i></span></div></div>
+    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Equipamentos</small><strong>187</strong></div><span class="ico"><i class="bi bi-gear-wide-connected"></i></span></div></div>
+  </section>
+
+  <!-- filtros -->
+  <section class="panel filters mb-3" aria-label="Filtros">
+    <form>
+      <div class="row g-3 align-items-end">
+        <div class="col-md-4">
+          <label class="filter-label" for="fBusca">Cliente ou CNPJ</label>
+          <div class="input-icon">
+            <i class="bi bi-search"></i>
+            <input type="search" class="form-control" id="fBusca" placeholder="Nome, código ou CNPJ">
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="filter-label" for="fSegmento">Segmento</label>
+          <select class="form-select" id="fSegmento">
+            <option selected>Todos</option>
+            <option>Indústria</option>
+            <option>Saúde</option>
+            <option>Condomínio</option>
+            <option>Logística</option>
+            <option>Varejo</option>
+            <option>Educação</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="filter-label" for="fStatus">Situação</label>
+          <select class="form-select" id="fStatus">
+            <option selected>Todas</option>
+            <option>Ativo</option>
+            <option>Em implantação</option>
+            <option>Inativo</option>
+          </select>
+        </div>
+        <div class="col-md-3 d-flex gap-2 justify-content-md-end">
+          <button type="submit" class="btn btn-brand"><i class="bi bi-funnel me-1"></i>Filtrar</button>
+          <button type="reset" class="btn btn-outline-brand">Limpar</button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!-- lista -->
+  <section class="panel">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+      <div>
+        <h2>Clientes cadastrados</h2>
+        <p class="sub mb-0">Empresas atendidas, com seus locais e equipamentos inspecionados</p>
+      </div>
+      <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#modalCliente"><i class="bi bi-plus-lg me-1"></i>Novo cliente</button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <caption class="visually-hidden">Lista de clientes cadastrados</caption>
+        <thead>
+          <tr><th>Código</th><th>Cliente</th><th>Segmento</th><th>Cidade</th><th>Contato</th><th class="text-center">Locais</th><th class="text-center">Equip.</th><th>Situação</th><th class="text-end">Ações</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CLI-001</td>
+            <td><strong>Metalúrgica Alfa</strong><small class="text-muted-fo d-block">12.345.678/0001-95</small></td>
+            <td>Indústria</td><td>Sorocaba/SP</td>
+            <td>Roberto Alves<small class="text-muted-fo d-block">(15) 3000-1001</small></td>
+            <td class="text-center">4</td><td class="text-center">18</td>
+            <td><span class="st st-ok">Ativo</span></td>
+            <td class="text-end text-nowrap">
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalCliente" title="Editar" aria-label="Editar Metalúrgica Alfa"><i class="bi bi-pencil"></i></button>
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalInativar" title="Inativar" aria-label="Inativar Metalúrgica Alfa"><i class="bi bi-slash-circle"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>CLI-002</td>
+            <td><strong>Condomínio Vista Verde</strong><small class="text-muted-fo d-block">23.456.789/0001-10</small></td>
+            <td>Condomínio</td><td>Itu/SP</td>
+            <td>Helena Costa<small class="text-muted-fo d-block">(11) 4000-2002</small></td>
+            <td class="text-center">2</td><td class="text-center">9</td>
+            <td><span class="st st-ok">Ativo</span></td>
+            <td class="text-end text-nowrap">
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalCliente" title="Editar" aria-label="Editar Condomínio Vista Verde"><i class="bi bi-pencil"></i></button>
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalInativar" title="Inativar" aria-label="Inativar Condomínio Vista Verde"><i class="bi bi-slash-circle"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>CLI-003</td>
+            <td><strong>Indústria Beta</strong><small class="text-muted-fo d-block">34.567.890/0001-24</small></td>
+            <td>Indústria</td><td>Campinas/SP</td>
+            <td>Paulo Mendes<small class="text-muted-fo d-block">(19) 3500-3003</small></td>
+            <td class="text-center">5</td><td class="text-center">27</td>
+            <td><span class="st st-ok">Ativo</span></td>
+            <td class="text-end text-nowrap">
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalCliente" title="Editar" aria-label="Editar Indústria Beta"><i class="bi bi-pencil"></i></button>
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalInativar" title="Inativar" aria-label="Inativar Indústria Beta"><i class="bi bi-slash-circle"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>CLI-004</td>
+            <td><strong>Hospital Central</strong><small class="text-muted-fo d-block">45.678.901/0001-38</small></td>
+            <td>Saúde</td><td>Jundiaí/SP</td>
+            <td>Dra. Marina Reis<small class="text-muted-fo d-block">(11) 4500-4004</small></td>
+            <td class="text-center">3</td><td class="text-center">22</td>
+            <td><span class="st st-ok">Ativo</span></td>
+            <td class="text-end text-nowrap">
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalCliente" title="Editar" aria-label="Editar Hospital Central"><i class="bi bi-pencil"></i></button>
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalInativar" title="Inativar" aria-label="Inativar Hospital Central"><i class="bi bi-slash-circle"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>CLI-005</td>
+            <td><strong>Logística Gama</strong><small class="text-muted-fo d-block">56.789.012/0001-52</small></td>
+            <td>Logística</td><td>Indaiatuba/SP</td>
+            <td>Fábio Teixeira<small class="text-muted-fo d-block">(19) 3800-5005</small></td>
+            <td class="text-center">3</td><td class="text-center">15</td>
+            <td><span class="st st-ok">Ativo</span></td>
+            <td class="text-end text-nowrap">
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalCliente" title="Editar" aria-label="Editar Logística Gama"><i class="bi bi-pencil"></i></button>
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalInativar" title="Inativar" aria-label="Inativar Logística Gama"><i class="bi bi-slash-circle"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>CLI-006</td>
+            <td><strong>Supermercado Delta</strong><small class="text-muted-fo d-block">67.890.123/0001-66</small></td>
+            <td>Varejo</td><td>Salto/SP</td>
+            <td>Camila Duarte<small class="text-muted-fo d-block">(11) 4600-6006</small></td>
+            <td class="text-center">6</td><td class="text-center">31</td>
+            <td><span class="st st-run">Em implantação</span></td>
+            <td class="text-end text-nowrap">
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalCliente" title="Editar" aria-label="Editar Supermercado Delta"><i class="bi bi-pencil"></i></button>
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalInativar" title="Inativar" aria-label="Inativar Supermercado Delta"><i class="bi bi-slash-circle"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>CLI-007</td>
+            <td><strong>Escola Técnica Sigma</strong><small class="text-muted-fo d-block">78.901.234/0001-80</small></td>
+            <td>Educação</td><td>Piracicaba/SP</td>
+            <td>Marcelo Viana<small class="text-muted-fo d-block">(19) 3400-7007</small></td>
+            <td class="text-center">1</td><td class="text-center">7</td>
+            <td><span class="st st-run">Em implantação</span></td>
+            <td class="text-end text-nowrap">
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalCliente" title="Editar" aria-label="Editar Escola Técnica Sigma"><i class="bi bi-pencil"></i></button>
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalInativar" title="Inativar" aria-label="Inativar Escola Técnica Sigma"><i class="bi bi-slash-circle"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>CLI-008</td>
+            <td><strong>Frigorífico Ômega</strong><small class="text-muted-fo d-block">89.012.345/0001-94</small></td>
+            <td>Indústria</td><td>Americana/SP</td>
+            <td>Silvia Prado<small class="text-muted-fo d-block">(19) 3600-8008</small></td>
+            <td class="text-center">2</td><td class="text-center">12</td>
+            <td><span class="st st-draft">Inativo</span></td>
+            <td class="text-end text-nowrap">
+              <button class="icon-btn icon-btn-sm" data-bs-toggle="modal" data-bs-target="#modalCliente" title="Editar" aria-label="Editar Frigorífico Ômega"><i class="bi bi-pencil"></i></button>
+              <button class="icon-btn icon-btn-sm" title="Reativar" aria-label="Reativar Frigorífico Ômega"><i class="bi bi-arrow-counterclockwise"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mt-3">
+      <span class="result-info">Exibindo 8 de 24 clientes</span>
+      <nav aria-label="Paginação de clientes">
+        <ul class="pagination pagination-sm">
+          <li class="page-item disabled"><a class="page-link" href="#" aria-label="Anterior"><i class="bi bi-chevron-left"></i></a></li>
+          <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#" aria-label="Próxima"><i class="bi bi-chevron-right"></i></a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<!-- cadastro / edição de cliente -->
+<div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="clienteTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h2 class="modal-title fs-6 fw-bold" id="clienteTitulo">Cadastro de cliente</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body filters pt-0">
+        <form>
+          <p class="form-section">Dados da empresa</p>
+          <div class="row g-3">
+            <div class="col-md-8">
+              <label class="filter-label req" for="cRazao">Razão social</label>
+              <input type="text" class="form-control" id="cRazao" placeholder="Ex.: Metalúrgica Alfa Ltda." required>
+            </div>
+            <div class="col-md-4">
+              <label class="filter-label req" for="cCnpj">CNPJ</label>
+              <input type="text" class="form-control" id="cCnpj" placeholder="00.000.000/0000-00" required>
+            </div>
+            <div class="col-md-6">
+              <label class="filter-label req" for="cSegmento">Segmento</label>
+              <select class="form-select" id="cSegmento" required>
+                <option value="" selected disabled>Selecione</option>
+                <option>Indústria</option><option>Saúde</option><option>Condomínio</option>
+                <option>Logística</option><option>Varejo</option><option>Educação</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="filter-label" for="cSituacao">Situação</label>
+              <select class="form-select" id="cSituacao">
+                <option selected>Ativo</option><option>Em implantação</option><option>Inativo</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="form-section">Contato principal</p>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="filter-label req" for="cContato">Nome</label>
+              <input type="text" class="form-control" id="cContato" required>
+            </div>
+            <div class="col-md-6">
+              <label class="filter-label" for="cTelefone">Telefone</label>
+              <input type="tel" class="form-control" id="cTelefone" placeholder="(00) 0000-0000">
+            </div>
+            <div class="col-12">
+              <label class="filter-label req" for="cEmail">E-mail</label>
+              <input type="email" class="form-control" id="cEmail" placeholder="contato@empresa.com" required>
+            </div>
+          </div>
+
+          <p class="form-section">Endereço da sede</p>
+          <div class="row g-3">
+            <div class="col-md-8">
+              <label class="filter-label" for="cEndereco">Endereço</label>
+              <input type="text" class="form-control" id="cEndereco" placeholder="Rua, número">
+            </div>
+            <div class="col-md-4">
+              <label class="filter-label" for="cCep">CEP</label>
+              <input type="text" class="form-control" id="cCep" placeholder="00000-000">
+            </div>
+            <div class="col-md-8">
+              <label class="filter-label" for="cCidade">Cidade</label>
+              <input type="text" class="form-control" id="cCidade">
+            </div>
+            <div class="col-md-4">
+              <label class="filter-label" for="cUf">UF</label>
+              <select class="form-select" id="cUf">
+                <option selected>SP</option><option>MG</option><option>RJ</option><option>PR</option><option>SC</option><option>RS</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="filter-label" for="cObs">Observações</label>
+              <textarea class="form-control" id="cObs" rows="3" placeholder="Informações úteis para as inspeções"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-outline-brand" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-brand" data-bs-dismiss="modal"><i class="bi bi-check2 me-1"></i>Salvar cliente</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- confirmar inativação -->
+<div class="modal fade" id="modalInativar" tabindex="-1" aria-labelledby="inativarTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h2 class="modal-title fs-6 fw-bold" id="inativarTitulo">Inativar cliente</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body pt-0">
+        <div class="alert alert-fo mb-0" role="alert">
+          O cliente deixa de aparecer no planejamento de novas inspeções. O histórico é mantido.
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-outline-brand" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-brand" data-bs-dismiss="modal">Inativar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- acessibilidade -->
+<div class="modal fade" id="acessibilidade" tabindex="-1" aria-labelledby="acessTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h2 class="modal-title fs-6 fw-bold" id="acessTitulo">Acessibilidade</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body pt-0">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+          <label class="form-check-label" for="darkSwitch">Modo escuro</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
