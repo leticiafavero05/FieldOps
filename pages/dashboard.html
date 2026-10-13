@@ -41,21 +41,47 @@
 
   <!-- indicadores -->
   <section class="row g-3 mb-3" aria-label="Indicadores">
-    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Pendentes</small><strong>12</strong></div><span class="ico"><i class="bi bi-hourglass-split"></i></span></div></div>
-    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Em andamento</small><strong>8</strong></div><span class="ico"><i class="bi bi-play-circle"></i></span></div></div>
-    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Concluídas</small><strong>34</strong></div><span class="ico"><i class="bi bi-check2-circle"></i></span></div></div>
-    <div class="col-6 col-lg-3"><div class="panel kpi"><div><small>Com não conformidades</small><strong>5</strong></div><span class="ico"><i class="bi bi-exclamation-triangle"></i></span></div></div>
+    <div class="col-6 col-lg-3">
+      <div class="panel kpi">
+        <div><small>Pendentes</small><strong>12</strong>
+          <span class="kpi-trend bad"><i class="bi bi-arrow-up-short"></i>2 desde ontem</span></div>
+        <span class="ico"><i class="bi bi-hourglass-split"></i></span>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="panel kpi">
+        <div><small>Em andamento</small><strong>8</strong>
+          <span class="kpi-trend good"><i class="bi bi-arrow-up-short"></i>1 hoje</span></div>
+        <span class="ico"><i class="bi bi-play-circle"></i></span>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="panel kpi">
+        <div><small>Concluídas</small><strong>34</strong>
+          <span class="kpi-trend good"><i class="bi bi-arrow-up-short"></i>6 na semana</span></div>
+        <span class="ico"><i class="bi bi-check2-circle"></i></span>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="panel kpi">
+        <div><small>Com não conformidades</small><strong>5</strong>
+          <span class="kpi-trend bad"><i class="bi bi-arrow-up-short"></i>2 no mês</span></div>
+        <span class="ico"><i class="bi bi-exclamation-triangle"></i></span>
+      </div>
+    </div>
   </section>
 
   <div class="row g-3 mb-3">
-    <!-- rosca -->
-    <section class="col-lg-7">
+    <!-- rosca: situação -->
+    <section class="col-lg-5">
       <div class="panel">
         <h2>Andamento das inspeções</h2>
         <p class="sub">Distribuição por situação no mês atual</p>
         <div class="row align-items-center g-3">
-          <div class="col-sm-5"><div class="donut" role="img" aria-label="59 inspeções no total"><span>59<small>inspeções</small></span></div></div>
-          <div class="col-sm-7">
+          <div class="col-sm-6">
+            <div class="donut" role="img" aria-label="59 inspeções no total"><span>59<small>inspeções</small></span></div>
+          </div>
+          <div class="col-sm-6">
             <ul class="legend">
               <li><i style="background:var(--c-done)"></i>Concluídas: 34</li>
               <li><i style="background:var(--c-run)"></i>Em andamento: 8</li>
@@ -67,14 +93,77 @@
       </div>
     </section>
 
-    <!-- alertas -->
+    <!-- barras: inspeções por semana -->
+    <section class="col-lg-7">
+      <div class="panel">
+        <h2>Inspeções por semana</h2>
+        <p class="sub">Total de inspeções realizadas em cada semana do mês</p>
+        <div class="bars" role="img" aria-label="Inspeções por semana: semana 1 com 12, semana 2 com 16, semana 3 com 14 e semana 4 com 17">
+          <div class="bar-col"><div class="bar-track"><strong>12</strong><div class="bar" style="--h:70%"></div></div><small>Semana 1</small></div>
+          <div class="bar-col"><div class="bar-track"><strong>16</strong><div class="bar" style="--h:94%"></div></div><small>Semana 2</small></div>
+          <div class="bar-col"><div class="bar-track"><strong>14</strong><div class="bar" style="--h:82%"></div></div><small>Semana 3</small></div>
+          <div class="bar-col"><div class="bar-track"><strong>17</strong><div class="bar" style="--h:100%"></div></div><small>Semana 4</small></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <!-- inspeções por técnico -->
     <section class="col-lg-5">
       <div class="panel">
-        <h2>Inspeções prioritárias</h2>
+        <h2>Inspeções por técnico</h2>
+        <p class="sub">Participação de cada técnico no total do mês</p>
+
+        <div class="tec-row">
+          <div class="top"><span>Ana Souza</span><strong>22</strong></div>
+          <div class="progress" role="progressbar" aria-label="Ana Souza" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" style="width:37%"></div></div>
+        </div>
+        <div class="tec-row">
+          <div class="top"><span>Carlos Lima</span><strong>18</strong></div>
+          <div class="progress" role="progressbar" aria-label="Carlos Lima" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" style="width:31%"></div></div>
+        </div>
+        <div class="tec-row">
+          <div class="top"><span>Marcos Dias</span><strong>11</strong></div>
+          <div class="progress" role="progressbar" aria-label="Marcos Dias" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" style="width:19%"></div></div>
+        </div>
+        <div class="tec-row">
+          <div class="top"><span>Juliana Prado</span><strong>8</strong></div>
+          <div class="progress" role="progressbar" aria-label="Juliana Prado" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" style="width:14%"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- alertas prioritários -->
+    <section class="col-lg-7">
+      <div class="panel">
+        <h2>Alertas prioritários</h2>
         <p class="sub">Exigem atenção do supervisor</p>
-        <div class="alert alert-fo"><strong>INS-1042</strong> com prioridade alta vence hoje e ainda não foi iniciada.</div>
-        <div class="alert alert-fo"><strong>INS-1038</strong> aguarda revisão há 2 dias.</div>
-        <div class="alert alert-fo mb-0"><strong>INS-1031</strong> teve 3 não conformidades críticas registradas.</div>
+
+        <div class="alert alert-fo alert-dismissible fade show" role="alert">
+          <span class="prio prio-alta me-2">Alta</span><strong>INS-1042</strong> vence hoje e ainda não foi iniciada.
+          <span class="alert-meta"><i class="bi bi-clock me-1"></i>Metalúrgica Alfa · Prensa hidráulica P-12</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Dispensar alerta"></button>
+        </div>
+        <div class="alert alert-fo alert-dismissible fade show" role="alert">
+          <span class="prio prio-alta me-2">Alta</span><strong>INS-1031</strong> teve 3 não conformidades críticas registradas.
+          <span class="alert-meta"><i class="bi bi-clock me-1"></i>Logística Gama · Empilhadeira EM-15</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Dispensar alerta"></button>
+        </div>
+        <div class="alert alert-fo alert-dismissible fade show" role="alert">
+          <span class="prio prio-media me-2">Média</span><strong>INS-1038</strong> aguarda revisão há 2 dias.
+          <span class="alert-meta"><i class="bi bi-clock me-1"></i>Indústria Beta · Compressor C-07</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Dispensar alerta"></button>
+        </div>
+        <div class="alert alert-fo alert-dismissible fade show mb-0" role="alert">
+          <span class="prio prio-baixa me-2">Baixa</span><strong>INS-1044</strong> será iniciada amanhã, sem pendências.
+          <span class="alert-meta"><i class="bi bi-clock me-1"></i>Hospital Central · Elevador E-02</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Dispensar alerta"></button>
+        </div>
       </div>
     </section>
   </div>
