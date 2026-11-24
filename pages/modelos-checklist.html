@@ -49,8 +49,9 @@
   <section class="panel lista" aria-labelledby="tituloLista">
     <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
       <div><h2 id="tituloLista">Modelos cadastrados</h2><p class="sub">Somente modelos publicados podem ser usados para planejar inspeções</p></div>
-      <a href="#" class="btn btn-brand btn-sm"><i class="bi bi-plus-lg me-1"></i>Novo modelo</a>
-    </div>
+      <button type="button" class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#novoModelo">
+  <i class="bi bi-plus-lg me-1"></i>Novo modelo
+</button>
 
     <fieldset class="d-flex flex-wrap gap-2 mb-3 border-0 p-0">
       <legend class="visually-hidden">Filtrar por status</legend>
@@ -186,6 +187,27 @@
           <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
           <label class="form-check-label" for="darkSwitch">Modo escuro</label>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="novoModelo" tabindex="-1" aria-labelledby="novoModeloTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="novoModeloTitulo">Novo modelo</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <label for="nomeModelo" class="form-label">Nome</label>
+        <input type="text" class="form-control mb-3" id="nomeModelo">
+        <label for="descModelo" class="form-label">Descrição</label>
+        <textarea class="form-control" id="descModelo" rows="3"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-brand">Salvar rascunho</button>
       </div>
     </div>
   </div>
