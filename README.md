@@ -21,20 +21,59 @@ O fluxo principal começa quando o supervisor cria um modelo de inspeção, agen
 
 Este repositório contém o protótipo web da visão do **supervisor**, o profissional responsável por organizar os cadastros, planejar inspeções, atribuí-las aos técnicos e revisar os resultados enviados após a execução em campo.
 
-O protótipo é responsivo e reúne as seguintes telas:
+O protótipo é responsivo, tem modo escuro e reúne as seguintes telas:
 
-- Dashboard com indicadores, inspeções recentes e alertas prioritários
-- Clientes, locais e equipamentos
-- Modelos de checklist
-- Planejamento de inspeções
-- Acompanhamento das inspeções
-- Revisão de uma inspeção concluída
+| Tela | Arquivo |
+|---|---|
+| Login administrativo (visual) | `index.html` |
+| Dashboard com indicadores, gráficos, alertas e inspeções recentes | `pages/dashboard.html` |
+| Clientes | `pages/clientes.html` |
+| Locais de inspeção | `pages/locais.html` |
+| Equipamentos | `pages/equipamentos.html` |
+| Modelos de checklist | `pages/modelos-checklist.html` |
+| Planejamento de inspeções | `pages/planejar-inspecao.html` |
+| Acompanhamento das inspeções | `pages/acompanhamento.html` |
+| Revisão de uma inspeção concluída | `pages/revisao-inspecao.html` |
 
-Por ser apenas um protótipo visual, ele usa dados fictícios e não possui backend, banco de dados, API nem login real.
+Por ser apenas um protótipo visual, ele usa dados fictícios e não possui backend, banco de dados, API nem login real. Não há JavaScript próprio: a interatividade (modais, menus e alertas) vem dos componentes do Bootstrap.
 
 ## Tecnologias
 
-HTML5, CSS3, Bootstrap 5 e Bootstrap Icons.
+- HTML5
+- CSS3
+- Bootstrap 5
+- Bootstrap Icons
+
+## Estrutura do projeto
+
+```
+FieldOps/
+├── index.html              # tela de login
+├── pages/                  # telas do painel do supervisor
+├── css/
+│   ├── style.css           # identidade visual e estilos compartilhados
+│   └── login.css           # estilos exclusivos do login
+└── README.md
+```
+
+## Como executar
+
+1. Clone o repositório.
+2. Abra o `index.html` no navegador (ou use a extensão Live Server do VS Code).
+3. Clique em **Entrar** para acessar o painel.
+
+## Organização do grupo
+
+- Desenvolvimento na branch `dev`, com uma branch por tarefa (`feature/...`).
+- Pull Request da `dev` para a `main` e merge após a revisão do grupo.
+- Tarefas organizadas no GitHub Project.
+
+## Entrega
+
+- Repositório: _adicionar link_
+- GitHub Project: _adicionar link_
+- Pull Request: _adicionar link_
+- GitHub Pages: _adicionar link_
 
 ## Integrantes
 
