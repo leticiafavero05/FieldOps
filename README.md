@@ -70,10 +70,10 @@ FieldOps/
 
 ## Entrega
 
-- Repositório: _adicionar link_
-- GitHub Project: _adicionar link_
-- Pull Request: _adicionar link_
-- GitHub Pages: _adicionar link_
+- Repositório: https://github.com/leticiafavero05/FieldOps
+- GitHub Project: https://github.com/users/leticiafavero05/projects/3
+- Pull Request: https://github.com/leticiafavero05/FieldOps/pulls
+- GitHub Pages: https://leticiafavero05.github.io/FieldOps/
 
 ## Integrantes
 
